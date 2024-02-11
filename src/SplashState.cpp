@@ -2,7 +2,6 @@
 #include <sstream>
 #include "SplashState.hpp"
 #include "MainMenuState.hpp"
-#include "DEFINITIONS.hpp"
 
 namespace GE
 {

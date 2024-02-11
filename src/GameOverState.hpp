@@ -7,13 +7,12 @@
 
 namespace GE
 {
-    class SplashState : public State
+    class GameOverState : public State
     {
         GameDataRef m_data;
-        sf::Clock m_clock;
         sf::Sprite m_background;
     public:
-        SplashState(GameDataRef data);
+        GameOverState(GameDataRef data);
         void Init();
         void HandleInput();
         void Update(float delta);

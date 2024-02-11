@@ -2,7 +2,6 @@
 #include <sstream>
 #include "MainMenuState.hpp"
 #include "GameState.hpp"
-#include "DEFINITIONS.hpp"
 
 namespace GE
 {

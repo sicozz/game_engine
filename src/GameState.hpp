@@ -1,8 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "DEFINITIONS.hpp"
 #include "State.hpp"
 #include "Game.hpp"
+#include "Pipe.hpp"
 
 namespace GE
 {
@@ -10,6 +12,8 @@ namespace GE
     {
         GameDataRef m_data;
         sf::Sprite m_background;
+        Pipe* m_pipe;
+
     public:
         GameState(GameDataRef data);
         void Init();
