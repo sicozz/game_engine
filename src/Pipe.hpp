@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "DEFINITIONS.hpp"
 #include "Game.hpp"
 
 namespace GE
@@ -16,7 +15,6 @@ namespace GE
         void DrawPipes();
         void SpawnTopPipe();
         void SpawnBottomPipe();
-        void SpawnInvisiblePipe();
         void MovePipes(float delta);
     };
 }

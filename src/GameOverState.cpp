@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include "DEFINITIONS.hpp"
 #include "GameOverState.hpp"
 
 namespace GE

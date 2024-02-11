@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include "DEFINITIONS.hpp"
 #include "SplashState.hpp"
 #include "MainMenuState.hpp"
 

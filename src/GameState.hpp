@@ -1,18 +1,20 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "DEFINITIONS.hpp"
 #include "State.hpp"
 #include "Game.hpp"
 #include "Pipe.hpp"
+#include "Land.hpp"
 
 namespace GE
 {
     class GameState : public State
     {
         GameDataRef m_data;
+        sf::Clock m_clock;
         sf::Sprite m_background;
         Pipe* m_pipe;
+        Land* m_land;
 
     public:
         GameState(GameDataRef data);
