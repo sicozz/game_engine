@@ -10,11 +10,14 @@ namespace GE
     {
         GameDataRef m_data;
         std::vector<sf::Sprite> m_pipeSprites;
+        int m_landHeight;
+        int m_pipeSpawnYOffset;
     public:
         Pipe(GameDataRef data);
         void DrawPipes();
         void SpawnTopPipe();
         void SpawnBottomPipe();
         void MovePipes(float delta);
+        void RandomizePipeOffset();
     };
 }

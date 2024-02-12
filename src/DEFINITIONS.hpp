@@ -7,9 +7,13 @@
 #define PLAY_BUTTON_FILEPATH "Resources/res/PlayButton.png"
 #define PIPE_UP_FILEPATH "Resources/res/PipeUp.png"
 #define PIPE_DOWN_FILEPATH "Resources/res/PipeDown.png"
-#define PIPE_MOVEMENT_SPEED 200.0f
+#define PIPE_MOVEMENT_SPEED 100.0f
 #define PIPE_SPAWN_FREQUENCY 0.5f
 #define LAND_FILEPATH "Resources/res/Land.png"
+#define BIRD_FRAME_0_FILEPATH "Resources/res/bird-00.png"
+#define BIRD_FRAME_1_FILEPATH "Resources/res/bird-01.png"
+#define BIRD_FRAME_2_FILEPATH "Resources/res/bird-02.png"
+#define BIRD_FRAME_3_FILEPATH "Resources/res/bird-03.png"
 #define SCREEN_HEIGHT 1024
 #define SCREEN_WIDTH 768
 #define SPLASH_SCENE_BACKGROUND_FILEPATH "Resources/res/Splash Background.png"

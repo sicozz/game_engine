@@ -6,6 +6,8 @@ namespace GE
     Pipe::Pipe(GameDataRef data)
         : m_data(data)
     {
+        m_landHeight = m_data->assets.GetTexture("land").getSize().y;
+        m_pipeSpawnYOffset = 0;
     }
 
     void Pipe::DrawPipes()
@@ -19,7 +21,7 @@ namespace GE
     void Pipe::SpawnTopPipe()
     {
         sf::Sprite sprite(m_data->assets.GetTexture("pipe down sprite"));
-        sprite.setPosition(m_data->window.getSize().x, 0);
+        sprite.setPosition(m_data->window.getSize().x, -m_pipeSpawnYOffset);
         m_pipeSprites.push_back(sprite);
     }
 
@@ -28,7 +30,7 @@ namespace GE
         sf::Sprite sprite(m_data->assets.GetTexture("pipe up sprite"));
         sprite.setPosition(
             m_data->window.getSize().x,
-            m_data->window.getSize().y - sprite.getGlobalBounds().height);
+            m_data->window.getSize().y - sprite.getGlobalBounds().height - m_pipeSpawnYOffset);
         m_pipeSprites.push_back(sprite);
     }
 
@@ -47,5 +49,10 @@ namespace GE
                 m_pipeSprites.at(i).move(-movement, 0);
             }
         }
+    }
+
+    void Pipe::RandomizePipeOffset()
+    {
+        m_pipeSpawnYOffset = rand() % (m_landHeight + 1);
     }
 }
