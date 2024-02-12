@@ -83,4 +83,9 @@ namespace GE
         m_movementClock.restart();
         m_birdState = BIRD_STATE_FLYING;
     }
+
+    const sf::Sprite &Bird::GetSprite() const
+    {
+        return m_birdSprite;
+    }
 }

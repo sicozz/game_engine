@@ -19,5 +19,6 @@ namespace GE
         void SpawnBottomPipe();
         void MovePipes(float delta);
         void RandomizePipeOffset();
+        const std::vector<sf::Sprite> &GetSprites() const;
     };
 }

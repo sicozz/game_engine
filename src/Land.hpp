@@ -14,5 +14,6 @@ namespace GE
         Land(GameDataRef data);
         void MoveLand(float delta);
         void DrawLand();
+        const std::vector<sf::Sprite> &GetSprites() const;
     };
 }

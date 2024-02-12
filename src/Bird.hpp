@@ -21,5 +21,6 @@ namespace GE
         void Update(float delta);
         void Animate(float delta);
         void Tap();
+        const sf::Sprite &GetSprite() const;
     };
 }

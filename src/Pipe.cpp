@@ -55,4 +55,9 @@ namespace GE
     {
         m_pipeSpawnYOffset = rand() % (m_landHeight + 1);
     }
+
+    const std::vector<sf::Sprite> &Pipe::GetSprites() const
+    {
+        return m_pipeSprites;
+    }
 }

@@ -30,10 +30,12 @@ namespace GE
         m_data->assets.LoadTexture(bird2_name, BIRD_FRAME_2_FILEPATH);
         m_data->assets.LoadTexture(bird3_name, BIRD_FRAME_3_FILEPATH);
 
-        m_background.setTexture(m_data->assets.GetTexture(background_name));
         m_pipe = new Pipe(m_data);
         m_land = new Land(m_data);
         m_bird = new Bird(m_data);
+        m_background.setTexture(m_data->assets.GetTexture(background_name));
+
+        m_gameState = GameStates::eReady;
     }
 
     void GameState::HandleInput()
@@ -52,27 +54,59 @@ namespace GE
                     sf::Mouse::Left,
                     m_data->window))
             {
-                m_bird->Tap();
+                if (GameStates::eGameOver != m_gameState)
+                {
+                    m_gameState = GameStates::ePlaying;
+                    m_bird->Tap();
+                }
             }
         }
     }
 
     void GameState::Update(float delta)
     {
-        m_pipe->MovePipes(delta);
-        m_land->MoveLand(delta);
-
-        if (m_clock.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY)
+        if (GameStates::eGameOver != m_gameState)
         {
+            m_bird->Animate(delta);
+            m_land->MoveLand(delta);
+        }
+        if (GameStates::ePlaying == m_gameState)
+        {
+            m_pipe->MovePipes(delta);
+            if (m_clock.getElapsedTime().asSeconds() > PIPE_SPAWN_FREQUENCY)
+            {
                 m_pipe->RandomizePipeOffset();
                 m_pipe->SpawnTopPipe();
                 m_pipe->SpawnBottomPipe();
 
                 m_clock.restart();
+            }
+            m_bird->Update(delta);
+            std::vector<sf::Sprite> land_sprites = m_land->GetSprites();
+            for (size_t i = 0; i < land_sprites.size(); i++)
+            {
+                if (m_collision.CheckSpriteCollision(
+                        m_bird->GetSprite(),
+                        land_sprites.at(i),
+                        0.625f,
+                        1.0f))
+                {
+                    m_gameState = GameStates::eGameOver;
+                }
+            }
+            std::vector<sf::Sprite> pipe_sprites = m_pipe->GetSprites();
+            for (size_t i = 0; i < pipe_sprites.size(); i++)
+            {
+                if (m_collision.CheckSpriteCollision(
+                        m_bird->GetSprite(),
+                        pipe_sprites.at(i),
+                        0.7f,
+                        1.0f))
+                {
+                    m_gameState = GameStates::eGameOver;
+                }
+            }
         }
-
-        m_bird->Animate(delta);
-        m_bird->Update(delta);
     }
 
     void GameState::Draw(float delta)

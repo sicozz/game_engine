@@ -47,4 +47,9 @@ namespace GE
             m_data->window.draw(m_landSprites.at(i));
         }
     }
+
+    const std::vector<sf::Sprite> &Land::GetSprites() const
+    {
+        return m_landSprites;
+    }
 }
